@@ -1,0 +1,22 @@
+//printf("Go Ahead"); //TESTING PURPOSES
+BYTE temp_storage[512];
+bool first_jpg = false;
+
+while (fread(temp_storage, sizeof(BYTE), 512, inp_file) || feof(inp_file) == 0)
+{
+    if (temp_storage[0] == 0xff && temp_storage[1] == 0xd8 && temp_storage[2] == 0xff && (temp_storage[3] & 0xf0) == 0xe0)
+    {
+        if(!first_jpg)
+        {
+            first_jpg = true;
+        }
+        else
+        {
+            fclose(curr_image);
+        }
+    }
+    else
+    {
+
+    }
+}

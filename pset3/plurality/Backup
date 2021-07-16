@@ -1,0 +1,37 @@
+bool vote(string name)
+{
+    int i;
+    for (i = 0; candidate_count > i; i++)
+    {
+        if (strcmp(name, candidates[i].name) == 0)
+        {
+            candidates[i].votes += 1;
+            return true;
+            break;
+        }
+    }
+    return false;
+}
+
+// Print the winner (or winners) of the election
+void print_winner(void)
+{
+    int i, int_votes;
+    int_votes = 0;
+    for (i = 0; candidate_count > i; i++)
+    {
+        if (candidates[i].votes > int_votes)
+        {
+            int_votes = candidates[i].votes;
+            i += 1;
+            break;
+        }
+    }
+    for (i = 0; candidate_count > i; i++)
+    {
+        if (candidates[i].votes == int_votes)
+        {
+            printf("%s\n", candidates[i].name);
+        }
+    }
+}
